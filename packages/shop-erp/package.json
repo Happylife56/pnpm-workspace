@@ -8,6 +8,7 @@
     "stylelint": "stylelint **/*.scss --fix"
   },
   "dependencies": {
+    "@common/components": "workspace:^0.1.0",
     "@common/core": "workspace:^1.0.0",
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.71",

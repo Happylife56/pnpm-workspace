@@ -13,13 +13,20 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    redirect: '/storeset',
+    children: [
+      ...modules,
+    ],
   },
-  ...modules,
 ];
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  next();
 });
 
 export default router;

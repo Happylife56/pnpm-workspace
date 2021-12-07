@@ -1,7 +1,7 @@
 export default [
   {
-    path: '/about',
-    name: 'About',
+    path: '/cashierset',
+    name: 'cashierset',
     component: () => import('../index.vue'),
   },
 ];

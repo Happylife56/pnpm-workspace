@@ -1,0 +1,3 @@
+test('cashierSet测试', () => {
+
+});

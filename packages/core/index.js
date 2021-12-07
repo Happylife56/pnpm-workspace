@@ -1,5 +1,7 @@
 import request from './request';
 
-export { request };
+import { useCommon } from './vueCore';
+
+export { request, useCommon };
 
 export const getNow = () => (new Date().getTime());

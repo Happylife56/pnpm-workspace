@@ -35,6 +35,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-unused-expressions': ['error', { allowShortCircuit: true }], // 允许使用断路表达式
     'import/extensions': 'off', // 取消对文件扩展名的验证
+    'vue/multi-word-component-names': 'off',
   },
   overrides: [
     {
