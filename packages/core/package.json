@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest"
   },
-  "author": "",
+  "author": "wenxin",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
