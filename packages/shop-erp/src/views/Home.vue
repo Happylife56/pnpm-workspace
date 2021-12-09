@@ -6,6 +6,8 @@
     <router-link to="/about">
       About
     </router-link>
+    <k-table />
+    <k-input />
   </div>
 </template>
 
@@ -13,8 +15,10 @@
 import { useStore } from 'vuex';
 import { onMounted } from 'vue';
 import { getNow, request } from '@common/core';
+import { KTable, KInput } from '@common/components';
 
 export default {
+  components: { KTable, KInput },
   setup() {
     const { state } = useStore();
     onMounted(() => {

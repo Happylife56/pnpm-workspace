@@ -1,36 +1,29 @@
 <template>
-  <el-table :data="tableData" style="width: 100%;">
-    <el-table-column prop="date" label="日期" width="180" />
-    <el-table-column prop="name" label="姓名" width="180" />
-    <el-table-column prop="address" label="地址" />
-  </el-table>
+  <div class="store-list">
+    <div class="shop-add">
+      <el-button type="primary" size="small">
+        新增店铺
+      </el-button>
+    </div>
+    <shopCardSet />
+  </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄',
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄',
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄',
-      }],
-    };
-  },
-};
+<script setup>
+import { useMessage } from '@common/core';
+import shopCardSet from './components/shopCardSet.vue';
+
+const { message } = useMessage();
+message.error('123');
+
 </script>
 
-<style>
+<style lang="scss" scoped>
+.store-list {
+  .shop-add {
+    background: #f5f5f5;
+    padding: 20px 50px;
+  }
+
+}
 </style>

@@ -1,16 +1,16 @@
 <template>
   <!-- 基础输入框 -->
   <el-input v-model.trim="inputValue" v-bind="$attrs" @keyup.enter="searchContent" @change="changeValue">
-    <template #append>
+    <template #append v-if="$slots.append">
       <slot name="append" />
     </template>
-    <template #prepend>
+    <template #prepend v-if="$slots.prepend">
       <slot name="prepend" />
     </template>
-    <template #prefix>
+    <template #prefix v-if="$slots.prefix">
       <slot name="prefix" />
     </template>
-    <template #suffix>
+    <template #suffix v-if="$slots.suffix">
       <slot name="suffix" />
     </template>
   </el-input>
@@ -30,17 +30,9 @@ export default defineComponent({
      */
     point: { type: Number, default: 2 },
     type: { type: String, default: 'number' },
-    slotType: {
-      type: String,
-      default: '',
-      validator: (value) => {
-        console.log('value: ', value);
-        return ['prepend', 'suffix', 'prefix', 'append', ''].includes(value);
-      },
-    },
   },
   emits: ['change', 'input', 'enter'],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const stopTime = ref(null);
     const keyupStatus = ref(true);
     const inputValue = computed({
@@ -107,7 +99,7 @@ export default defineComponent({
       }, 800);
     };
     return {
-      inputValue, changeValue, searchContent, slots,
+      inputValue, changeValue, searchContent,
     };
   },
 });

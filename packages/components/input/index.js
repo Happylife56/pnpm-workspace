@@ -2,8 +2,8 @@
 import KInput from './main.vue';
 
 // 为组件提供 install 安装方法，供按需引入
-KInput.install = function (Vue) {
-  Vue.component(KInput.name, KInput);
+KInput.install = function (app) {
+  app.component(KInput.name, KInput);
 };
 
 // 默认导出组件

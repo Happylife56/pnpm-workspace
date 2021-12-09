@@ -1,9 +1,17 @@
 import KButton from './button';
 import KInput from './input';
+import KTable from './table';
+import KPage from './pagination';
+import KBatchTable from './batch-table';
+import KMessage from './message';
 
 const KUI = {
   KButton,
   KInput,
+  KTable,
+  KPage,
+  KBatchTable,
+  KMessage,
   install: () => {},
 };
 
@@ -22,4 +30,6 @@ KUI.install = function (app) {
 
 export default KUI;
 
-export { KButton, KInput };
+export {
+  KButton, KInput, KTable, KPage, KBatchTable, KMessage,
+};

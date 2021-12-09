@@ -1,5 +1,5 @@
 <template>
-  <!-- // 按钮防多次点击 -->
+  <!--  按钮防多次点击 -->
   <el-button :disabled="!buttonStatus || disabled" :click-state="clickState" v-bind="$attrs" @click.stop="onclick">
     <slot />
     <i class="el-icon-lock el-icon--right" v-if="iconLock" />

@@ -4,6 +4,7 @@ import { KButton } from '@common/components';
 import router from './router';
 import store from './store';
 import App from './App.vue';
+import '@/styles/normalize.css';
 import 'element-plus/lib/theme-chalk/index.css';
 
 createApp(App).use(router).use(store).use(ElementPlus)

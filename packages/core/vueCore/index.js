@@ -1,5 +1,7 @@
 import { useStore } from 'vuex';
-import { computed } from 'vue';
+import {
+  ref, reactive, computed, watch,
+} from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 export function useCommon() {
@@ -15,6 +17,6 @@ export function useCommon() {
   };
 
   return {
-    store, route, router, computed, getState, getGetters, loadPage,
+    store, route, router, ref, reactive, computed, watch, getState, getGetters, loadPage,
   };
 }

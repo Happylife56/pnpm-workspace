@@ -2,8 +2,8 @@
   <ul class="shop-card">
     <li v-for="(store, index) in listData" :key="index" :style="{ height: height }">
       <div class="card-info">
-        <img v-if="store.imageUrl" :src="imageHost + store.imageUrl" alt="图片无法加载">
-        <img v-else src="@/assets/image/shopImg.png" alt="图片无法加载">
+        <!-- <img v-if="store.imageUrl" :src="imageHost + store.imageUrl" alt="图片无法加载"> -->
+        <img src="../image/shopImg.png" alt="图片无法加载">
         <div class="card-detail">
           <span class="card-detail-span">
             {{ store.name }}
@@ -21,13 +21,13 @@
         </div>
       </div>
       <div class="card-set">
-        <k-button type="primary" plain size="small" :icon-lock="machineEditor" @click="openMachine(store.id)">
+        <k-button type="primary" plain size="small" :icon-lock="getEditor()" @click="openMachine(store.id)">
           机器号管理
         </k-button>
-        <k-button type="primary" plain size="small" :icon-lock="storeEditor" @click="editStore(store)">
+        <k-button type="primary" plain size="small" :icon-lock="getEditor('store')" @click="editStore(store)">
           编辑
         </k-button>
-        <k-button size="small" :icon-lock="storeEditor" @click="deteleStore(store.id, index)">
+        <k-button size="small" :icon-lock="getEditor('store')" @click="deteleStore(store.id, index)">
           删除
         </k-button>
       </div>
@@ -37,8 +37,9 @@
 </template>
 
 <script setup>
+
 const props = defineProps({
-  data: {
+  listData: {
     type: Array,
     default: () => [
       {
@@ -127,6 +128,15 @@ const props = defineProps({
     default: 1,
   },
 });
+console.log(props);
+const getEditor = (type) => {
+  if (type) return false;
+  return true;
+};
+
+const openMachine = () => {};
+const editStore = () => {};
+const deteleStore = () => {};
 </script>
 
 <style lang="scss" scoped>
