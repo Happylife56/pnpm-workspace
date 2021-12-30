@@ -1,0 +1,19 @@
+$--colors: (
+  'primary': (
+    'base': #f4364c,
+  ),
+);
+
+// You should use them in scss, because we calculate it by sass.
+// comment next lines to use default color
+@forward 'element-plus/theme-chalk/src/common/var.scss' with
+  (
+    
+    $colors: $--colors,
+    // $button-padding-horizontal: ('default': 50px)
+  );
+
+// if you want to import all
+// @use 'element-plus/theme-chalk/src/index.scss' as *;
+
+

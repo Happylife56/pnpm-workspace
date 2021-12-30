@@ -1,3 +1,0 @@
-test('cashierSet测试', () => {
-
-});

@@ -8,6 +8,7 @@
 
 <script>
 import { ref, defineComponent } from 'vue';
+import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   name: 'KButton',
@@ -25,8 +26,10 @@ export default defineComponent({
 
     const onclick = () => {
       // 如果没有权限，提示没有权限
-      if (props.iconLock) this.warnAuthor();
-      else {
+      if (props.iconLock) {
+        ElMessage.closeAll();
+        ElMessage.warning('抱歉，您无权访问，请联系管理员分配权限');
+      } else {
         if (buttonStatus.value) {
           buttonStatus.value = false;
           emit('click');

@@ -1,5 +1,5 @@
 {
-  "name": "@commom/utils",
+  "name": "@common/utils",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,5 +7,8 @@
     "test": "jest"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@common/components": "workspace:^1.0.0"
+  }
 }

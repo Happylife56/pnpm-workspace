@@ -1,21 +1,34 @@
 <template>
   <div class="store-list">
     <div class="shop-add">
-      <el-button type="primary" size="small">
+      <el-button type="primary" size="small" @click="loadAddStore">
         新增店铺
       </el-button>
     </div>
-    <shopCardSet />
+    <emptyData v-if="bitHasData">
+      <span class="c-gray9">
+        您还没有创建自己的店铺，
+        <span class="c-blue pointer" @click="loadAddStore">
+          点击创建
+        </span>一个吧！
+      </span>
+    </emptyData>
+    <shopCardSet v-else />
   </div>
 </template>
 
 <script setup>
-import { useMessage } from '@common/core';
-import shopCardSet from './components/shopCardSet.vue';
+import { useCommon } from '@common/core';
+import shopCardSet from './components/shopCard/shopCardSet.vue';
 
-const { message } = useMessage();
-message.error('123');
+import emptyData from './components/emptyData/index.vue';
 
+const { ref, loadPage } = useCommon();
+
+const bitHasData = ref(false);
+const loadAddStore = () => {
+  loadPage('/storeset/addstore');
+};
 </script>
 
 <style lang="scss" scoped>

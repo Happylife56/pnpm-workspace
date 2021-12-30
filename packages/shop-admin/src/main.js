@@ -1,12 +1,23 @@
 import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
-import { KButton } from '@common/components';
+import KUI from '@common/components';
+import * as ElIconModules from '@element-plus/icons';
 import router from './router';
 import store from './store';
 import App from './App.vue';
-import '@/styles/normalize.css';
-import 'element-plus/lib/theme-chalk/index.css';
+import './styles/normalize.css';
+import './assets/iconfont/iconfont.css';
+import 'element-plus/dist/index.css';
 
-createApp(App).use(router).use(store).use(ElementPlus)
-  .use(KButton)
+const app = createApp(App);
+app.use(router).use(store).use(ElementPlus)
+  .use(KUI)
   .mount('#app');
+
+// 统一注册Icon图标
+Object.keys(ElIconModules).forEach((iconName) => {
+  if (Reflect.has(ElIconModules, iconName)) {
+    const item = ElIconModules[iconName];
+    app.component(iconName, item);
+  }
+});

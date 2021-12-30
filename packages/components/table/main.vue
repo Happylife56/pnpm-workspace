@@ -2,7 +2,7 @@
   <el-table :data="tableDataList" style="width: 100%;" class="mt20" v-bind="$attrs" :empty-text="emptyText">
     <el-table-column v-for="item in tableColumn" :key="item.prop" :label="item.label" :name="item.name" :width="item.width" :min-width="item.minWidth" show-overflow-tooltip>
       <template #default="scope">
-        <slot v-if="item.custom" :name="item.custom" :item="scope.row" :index="scope.$index" />
+        <slot v-if="item.custom && scope.$index >=0" :name="item.custom" :item="scope.row" :index="scope.$index" />
         <span v-else>{{ scope.row[item.prop] }}</span>
       </template>
     </el-table-column>
@@ -10,7 +10,7 @@
       <slot name="empty" />
     </template>
   </el-table>
-  <pagination :total="total" v-model="currentPage" @change="chagnePage" />
+  <pagination :total="total" v-model="currentPage" @change="changePage" />
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default defineComponent({
     modelValue: { type: Number, default: 1 },
     total: { type: Number, default: 9 },
   },
-  emits: ['input', 'current-change', 'update:tableData'],
+  emits: ['update:modelValue', 'current-change', 'update:tableData'],
   setup(props, { emit }) {
     const tableDataList = computed({
       get: () => props.tableData,
@@ -41,14 +41,14 @@ export default defineComponent({
     });
     const currentPage = computed({
       get: () => props.modelValue,
-      set: (value) => emit('input', value),
+      set: (value) => emit('update:modelValue', value),
     });
 
-    const chagnePage = () => {
+    const changePage = () => {
       emit('current-change', currentPage.value);
     };
 
-    return { currentPage, tableDataList, chagnePage };
+    return { currentPage, tableDataList, changePage };
   },
 });
 

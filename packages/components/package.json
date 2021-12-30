@@ -9,7 +9,10 @@
   "author": "wenxin",
   "license": "ISC",
   "dependencies": {
-    "element-plus": "^1.2.0-beta.5",
+    "element-plus": "1.2.0-beta.6",
     "vue": "^3.2.24"
+  },
+  "devDependencies": {
+    "vue-router": "^4.0.12"
   }
 }

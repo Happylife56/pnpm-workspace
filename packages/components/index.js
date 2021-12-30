@@ -3,7 +3,10 @@ import KInput from './input';
 import KTable from './table';
 import KPage from './pagination';
 import KBatchTable from './batch-table';
-import KMessage from './message';
+import KDialog from './dialog';
+import KBreadcrumb from './breadcrumb';
+import KTabs from './tabs';
+import KPicker from './picker';
 
 const KUI = {
   KButton,
@@ -11,7 +14,10 @@ const KUI = {
   KTable,
   KPage,
   KBatchTable,
-  KMessage,
+  KDialog,
+  KBreadcrumb,
+  KTabs,
+  KPicker,
   install: () => {},
 };
 
@@ -31,5 +37,5 @@ KUI.install = function (app) {
 export default KUI;
 
 export {
-  KButton, KInput, KTable, KPage, KBatchTable, KMessage,
+  KButton, KInput, KTable, KPage, KBatchTable, KDialog, KBreadcrumb, KTabs, KPicker,
 };

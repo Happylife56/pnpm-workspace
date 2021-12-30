@@ -8,10 +8,12 @@
     "stylelint": "stylelint **/*.scss --fix"
   },
   "dependencies": {
-    "@common/components": "workspace:^0.1.0",
+    "@common/components": "workspace:^1.0.0",
     "@common/core": "workspace:^1.0.0",
+    "@common/utils": "workspace:^1.0.0",
+    "@element-plus/icons": "^0.0.11",
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.71",
+    "element-plus": "1.2.0-beta.6",
     "vue": "^3.2.23",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2",
@@ -27,6 +29,8 @@
     "sass": "^1.32.11",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
+    "unplugin-auto-import": "^0.5.3",
+    "unplugin-vue-components": "^0.17.9",
     "vite": "^2.6.14"
   }
 }

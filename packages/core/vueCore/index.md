@@ -9,6 +9,6 @@ import { useCommon } from '@common/core'
 
 <script setup>
   import { useCommon } from '@common/core';
-  const { store, route, router, ref, reactive, computed, watch, getState, getGetters, loadPage, } = useCommon();
+  const { store, route, router, ref, nextTick, reactive, computed, watch, onMounted, getState, getGetters, routerName, loadPage, } = useCommon();
 </script>
 ```

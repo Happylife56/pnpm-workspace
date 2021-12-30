@@ -2,7 +2,7 @@ module.exports = {
   extends: "stylelint-config-sass-guidelines",
   rules: {
     "selector-max-id": 2,
-    "at-rule-no-unknown": [true, { ignoreAtRules: ["include", "mixin"] }],
+    "at-rule-no-unknown": [true, { ignoreAtRules: ["include", "mixin","forward", "use",/^box-/] }],
     "selector-max-compound-selectors": 4, // 允许伪类嵌套4层
     "max-nesting-depth": [
       4,
@@ -13,6 +13,7 @@ module.exports = {
     "selector-class-pattern": null, // 允许下划线以及其他类型 __
     "declaration-property-value-disallowed-list": {
       "unprefixed-property-name": ["/^border/", "^color",] //允许样式覆盖
-    }
+    },
+    "scss/dollar-variable-pattern": [/^$/, {"ignore": "global"}],
   }
 };

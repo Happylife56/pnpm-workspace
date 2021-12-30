@@ -1,6 +1,6 @@
 // src/router/index.js
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '@/views/home/index.vue';
 
 const routesModules = import.meta.globEager('../views/**/router/*.js');
 const modules = [];
@@ -13,8 +13,15 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    children: [
+      ...modules,
+      {
+        path: '/permission', // 权限操作
+        name: 'permission',
+        component: () => import('@/views/permission/index.vue'),
+      },
+    ],
   },
-  ...modules,
 ];
 
 const router = createRouter({

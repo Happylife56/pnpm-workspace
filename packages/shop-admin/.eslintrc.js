@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   extends: [
     // 'plugin:vue/vue3-essential',
     'plugin:vue/vue3-strongly-recommended',
@@ -11,9 +12,9 @@ module.exports = {
   plugins: ['vue'],
   env: {
     node: true,
-    jest: true,
     browser: true,
-    es6: true,
+    es2021: true,
+    'vue/setup-compiler-macros': true,
   },
   rules: {
     // 自己写一些想配置的规则
@@ -45,8 +46,4 @@ module.exports = {
       },
     },
   ],
-  globals: {
-    defineEmits: true,
-    defineProps: true,
-  },
 };

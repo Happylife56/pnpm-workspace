@@ -31,8 +31,8 @@ export default defineComponent({
     point: { type: Number, default: 2 },
     type: { type: String, default: 'number' },
   },
-  emits: ['change', 'input', 'enter'],
-  setup(props, { emit }) {
+  emits: ['change', 'update:modelValue', 'enter'],
+  setup(props, { emit, attrs }) {
     const stopTime = ref(null);
     const keyupStatus = ref(true);
     const inputValue = computed({
@@ -62,7 +62,7 @@ export default defineComponent({
               if (value.split('.')[1].length > 3) { // 控制只能输入小数点后3位
                 value = (value.match(/^\d*(\.?\d{0,3})/g)[0]) || null;
               }
-            } else if (this.point === 1) {
+            } else if (props.point === 1) {
               if (value.split('.')[1].length > 1) { // 控制只能输入小数点后1位
                 value = (value.match(/^\d*(\.?\d{0,1})/g)[0]) || null;
               }
@@ -76,9 +76,9 @@ export default defineComponent({
       } else if (props.type === 'intText') { // 只能输入整数或者字母
         value = value.replace(/[^\w]/g, '');
       }
-      if (this.$attrs.max !== undefined && value > this.$attrs.max) value = this.$attrs.max;
-      if (this.$attrs.min !== undefined && value < this.$attrs.min) value = this.$attrs.min;
-      emit('input', value);
+      if (attrs.max !== undefined && value > Number(attrs.max)) value = attrs.max;
+      if (attrs.min !== undefined && value < Number(attrs.min)) value = attrs.min;
+      emit('update:modelValue', value);
     };
     // 搜索内容
     const searchContent = () => {

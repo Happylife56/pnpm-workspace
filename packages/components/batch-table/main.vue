@@ -1,5 +1,5 @@
 <template>
-  <el-table ref="multipleTable" :data="tableData" height="100%" @select="handleSelect" @select-all="selectAll" @row-click="handleRowClick">
+  <el-table ref="multipleTable" empty-text="暂无数据" :data="tableData" height="100%" @select="handleSelect" @select-all="selectAll" @row-click="handleRowClick">
     <el-table-column type="selection" width="55" :selectable="checkSelection" />
     <el-table-column v-for="item in tableColumn" :label="item.label" :key="item.prop" :width="item.width" :min-width="item.minWidth" show-overflow-tooltip>
       <template #default="scope">
@@ -8,23 +8,25 @@
       </template>
     </el-table-column>
   </el-table>
-  <div class="mt10">
-    <slot>
-      <el-button>批量删除</el-button>
-      <el-button>批量编辑</el-button>
-    </slot>
+  <div class="mt20">
+    <slot name="footer" />
   </div>
+  <pagination :total="total" v-model="currentPage" @change="changePage" />
 </template>
 
 <script>
 import {
-  ref, computed, watch, defineComponent,
+  ref, computed, watch, defineComponent, nextTick,
 } from 'vue';
+import pagination from '../pagination';
 
 export default defineComponent({
   name: 'KBatchTable',
+  components: { pagination },
   props: {
     modelValue: { type: Array, default: () => [] },
+    total: { type: Number, default: 9 },
+    page: { type: Number, default: 1 },
     tableData: { type: Array, default: () => [] },
     tableColumn: {
       type: Array,
@@ -35,7 +37,7 @@ export default defineComponent({
       ],
     },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'update:page', 'current-change'],
   setup(props, { emit }) {
     watch(() => props.tableData, (val) => {
       val.length && toggleSelection(multipleSelection.value);
@@ -89,8 +91,18 @@ export default defineComponent({
 
     const checkSelection = (row) => !row.select;
 
+    const currentPage = computed({
+      get: () => props.page,
+      set: (value) => emit('update:page', value),
+    });
+    const changePage = () => {
+      nextTick(() => {
+        emit('current-change', currentPage.value);
+      });
+    };
+
     return {
-      multipleTable, handleSelect, selectAll, handleRowClick, checkSelection, toggleSelection,
+      multipleTable, handleSelect, selectAll, handleRowClick, checkSelection, toggleSelection, currentPage, changePage,
     };
   },
 });

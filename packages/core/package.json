@@ -9,8 +9,9 @@
   "author": "wenxin",
   "license": "ISC",
   "dependencies": {
+    "@common/components": "workspace:^1.0.0",
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.40",
+    "element-plus": "1.2.0-beta.6",
     "vue": "^3.2.23",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"

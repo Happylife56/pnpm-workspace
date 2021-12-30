@@ -1,7 +1,9 @@
-import request from './request';
-import { useCommon } from './vueCore';
-import { useMessage } from './message';
+import request from './useRequest';
 
-export { request, useCommon, useMessage };
+export { request };
+
+export * from './vueCore';
+export * from './useMessage';
+export * from './useForm';
 
 export const getNow = () => (new Date().getTime());
